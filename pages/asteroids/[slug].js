@@ -87,7 +87,6 @@ const Asteroid = ({ data }) => {
                   const id = uniqueId();
                   const km = Math.round(approach.miss_distance.kilometers);
                   const lunar = Math.round(approach.miss_distance.lunar);
-                  console.log(approach);
                   return (
                     <tr key={id}>
                       <td>{Math.round(approach.relative_velocity.kilometers_per_second)}</td>
@@ -110,9 +109,8 @@ const Asteroid = ({ data }) => {
 
 export const getServerSideProps = async (context) => {
     const { slug } = context.query;
-    console.log(slug);
-    const { data } = await axios.get(`https://api.nasa.gov/neo/rest/v1/neo/${slug}?api_key=itYBJlHNMAh73Nr7O3xa8DdLLVQu91PEoGXlJOa6`);
-    console.log(data);
+    const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+    const { data } = await axios.get(`https://api.nasa.gov/neo/rest/v1/neo/${slug}?api_key=${apiKey}`);
     return {
       props: { data },
     };

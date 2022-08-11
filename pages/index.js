@@ -2,7 +2,7 @@ import Head from 'next/head';
 import cn from 'classnames';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { uniqueId } from 'lodash';
+
 
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
@@ -36,7 +36,6 @@ const Home = ({ apodData, asteroidsData }) => {
   useEffect(() => {
     const fetchByScroll = async () => {
       if (fetching) {
-        console.log('scroll');
         const { data } = await axios.get(nextLink);
         const nearEarthObjects = Object.values(data.near_earth_objects).flat();
         setAsteroids(nearEarthObjects);
@@ -100,12 +99,9 @@ const Home = ({ apodData, asteroidsData }) => {
           </label>
         </div>
         <div className={styles.asteroids}>
-          {getRenderData().map(asteroid => {
-            console.log(asteroid);
-            return (
+          {getRenderData().map(asteroid => (
               <AsteroidCard key={asteroid.id} data={asteroid} unit={unit} />
-            );
-          })}
+            ))}
         </div>
       </main>
       <Footer />
@@ -114,10 +110,11 @@ const Home = ({ apodData, asteroidsData }) => {
 };
 
 export const getServerSideProps = async () => {
+  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
   try {
     const { today, tomorrow } = getDaysForUrl();
-    const apodRes = await axios.get('https://api.nasa.gov/planetary/apod?thumbs=true&api_key=itYBJlHNMAh73Nr7O3xa8DdLLVQu91PEoGXlJOa6');
-    const asteroidsRes = await axios.get(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${today}&end_date=${tomorrow}&api_key=itYBJlHNMAh73Nr7O3xa8DdLLVQu91PEoGXlJOa6`);
+    const apodRes = await axios.get(`https://api.nasa.gov/planetary/apod?thumbs=true&api_key=${apiKey}`);
+    const asteroidsRes = await axios.get(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${today}&end_date=${tomorrow}&api_key=${apiKey}`);
     return {
       props: {
         apodData: apodRes.data,
