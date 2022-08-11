@@ -5,7 +5,6 @@ import cn from 'classnames';
 import styles from '../styles/Header.module.css';
 
 const Header = ({ data, page }) => {
-  console.log(data.url);
   return (
     <header style={{ backgroundImage: `url(${data.url})`}} className={styles.header}>
       <div>
