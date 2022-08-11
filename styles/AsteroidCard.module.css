@@ -1,0 +1,32 @@
+.info {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 11px;
+}
+
+.info p {
+  margin: 0;
+}
+
+.image {
+  flex: 0 0 93px;
+}
+
+.name {
+  text-decoration: underline;
+}
+
+.button {
+  border: none;
+  border-radius: 24px;
+  padding: 2px 11px;
+
+  font-weight: bold;
+  font-size: 11px;
+  line-height: 20px;
+  color: var(--white);
+  text-transform: uppercase;
+
+  background-color: var(--blue);
+}
