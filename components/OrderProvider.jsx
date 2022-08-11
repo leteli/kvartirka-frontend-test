@@ -4,7 +4,9 @@ import OrderContext from '../contexts/OrderContext.js';
 const OrderProvider = ({ children }) => {
   const [list, setList] = useState([]);
   const addAsteroid = (item) => {
-    setList([...list, item]);
+    if (!list.includes(item)) {
+      setList([...list, item]);
+    }
   };
 
   const removeAsteroid = (id) => {
