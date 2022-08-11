@@ -39,7 +39,7 @@ const Home = ({ apodData, asteroidsData }) => {
         // const arr = nextLink.split('//');
         // arr[0] = 'https:';
         // const secureLink = arr.join('//');
-        const { data } = await axios.get(secureLink);
+        const { data } = await axios.get(nextLink);
         const nearEarthObjects = Object.values(data.near_earth_objects).flat();
         setAsteroids(nearEarthObjects);
         setNextLink(data.links.next);
