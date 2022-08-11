@@ -76,3 +76,12 @@
   color: var(--white);
   background-color: var(--blue);
 }
+
+.delete:hover,
+.button:hover {
+  cursor: pointer;
+}
+
+.button:active {
+  background-color: #0D47A1;
+}

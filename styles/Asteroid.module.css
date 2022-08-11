@@ -109,6 +109,14 @@
   background-color: var(--blue);
 }
 
+.button:hover {
+  cursor: pointer;
+}
+
+.button:active {
+  background-color: #0D47A1;
+}
+
 .approaches,
 .approaches th,
 .approaches td {
