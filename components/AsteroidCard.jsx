@@ -33,6 +33,7 @@ const AsteroidCard = ({ data, unit }) => {
           alt="Иконка опасности астероида"
           width={93}
           height={95}
+          layout="fixed"
           className={styles.image}
         ></Image>
         <div>
