@@ -22,6 +22,7 @@ const Order = () => {
     <Head>
       <title>Order Armageddon V2</title>
       <meta name="description" content="Armageddon V2 Website" />
+      <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
     </Head>
     <Header data={apodData} page="order" />
     <main className={styles.main}>

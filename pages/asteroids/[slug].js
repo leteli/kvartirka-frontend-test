@@ -30,6 +30,7 @@ const Asteroid = ({ data }) => {
     Venus: 'Венера',
     Earth: 'Земля',
     Mars: 'Марс',
+    Moon: 'Луна',
   };
 
   return (
@@ -37,6 +38,7 @@ const Asteroid = ({ data }) => {
       <Head>
         <title>Asteroid Page</title>
         <meta name="description" content="Armageddon V2 Website" />
+        <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
       </Head>
       <Header data={apodData} page="asteroid" />
       <main className={styles.main}>
@@ -87,6 +89,7 @@ const Asteroid = ({ data }) => {
                   const id = uniqueId();
                   const km = Math.round(approach.miss_distance.kilometers);
                   const lunar = Math.round(approach.miss_distance.lunar);
+                  console.log(approach.orbiting_body);
                   return (
                     <tr key={id}>
                       <td>{Math.round(approach.relative_velocity.kilometers_per_second)}</td>

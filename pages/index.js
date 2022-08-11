@@ -36,7 +36,10 @@ const Home = ({ apodData, asteroidsData }) => {
   useEffect(() => {
     const fetchByScroll = async () => {
       if (fetching) {
-        const { data } = await axios.get(nextLink);
+        // const arr = nextLink.split('//');
+        // arr[0] = 'https:';
+        // const secureLink = arr.join('//');
+        const { data } = await axios.get(secureLink);
         const nearEarthObjects = Object.values(data.near_earth_objects).flat();
         setAsteroids(nearEarthObjects);
         setNextLink(data.links.next);
@@ -71,6 +74,7 @@ const Home = ({ apodData, asteroidsData }) => {
       <Head>
         <title>Armageddon V2</title>
         <meta name="description" content="Armageddon V2 Website" />
+        <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header data={apodData} page="home" />
